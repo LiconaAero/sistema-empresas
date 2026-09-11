@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Sistema de Empresas</title>
+
+    <link rel="stylesheet" href="estilo.css">
+</head>
+
+<body>
+
+    <h1>Sistema de Empresas</h1>
+
+    <p>Bienvenido a nuestro sistema</p>
+
+    <button onclick="mostrarFormulario()">
+        Registrar empresa
+    </button>
+
+
+    <div id="formulario" style="display: none;">
+
+        <h2>Registrar empresa</h2>
+
+
+        <label>Nombre de la empresa:</label>
+
+        <input type="text" id="nombre">
+
+        <br><br>
+
+
+        <label>Categoría:</label>
+
+        <select id="categoria" onchange="actualizarConceptos()">
+
+            <option value="">
+                Selecciona una categoría
+            </option>
+
+            <option value="premium">
+                Premium
+            </option>
+
+            <option value="estandar">
+                Estándar
+            </option>
+
+            <option value="economico">
+                Económico
+            </option>
+
+            <option value="pymes">
+                PYMES
+            </option>
+
+        </select>
+
+
+        <br><br>
+
+
+        <label>Concepto:</label>
+
+        <select id="concepto" onchange="calcularPrecio()">
+
+            <option value="">
+                Primero selecciona una categoría
+            </option>
+
+        </select>
+
+
+        <br><br>
+
+
+        <label>Superficie (m²):</label>
+
+        <input 
+            type="number" 
+            id="superficie"
+            oninput="calcularPrecio()"
+        >
+
+
+        <br><br>
+
+
+        <p id="resultadoPrecio"></p>
+
+        <p id="resultadoTotal"></p>
+
+
+        <br>
+
+
+        <button onclick="guardarEmpresa()">
+            Guardar empresa
+        </button>
+
+    </div>
+    <hr>
+
+<h2>Empresas registradas</h2>
+
+<table border="1" id="tablaEmpresas">
+
+    <thead>
+        <tr>
+            <th>Empresa</th>
+            <th>Categoría</th>
+            <th>Concepto</th>
+            <th>m²</th>
+            <th>Total</th>
+            <th>Pagado</th>
+            <th>Saldo</th>
+            <th>Estado</th>
+            <th>Acciones</th>
+        </tr>
+    </thead>
+
+    <tbody id="listaEmpresas">
+    </tbody>
+
+</table>
+
+<!-- FORMULARIO DE PAGO -->
+
+<div id="formularioPago" style="display: none;">
+
+    <hr>
+
+    <h2>Registrar pago</h2>
+
+    <p id="empresaPago"></p>
+
+    <p id="saldoPago"></p>
+
+    <label>Fecha del pago:</label>
+    <input type="date" id="fechaPago">
+
+    <br><br>
+
+    <label>Monto del pago:</label>
+    <input 
+        type="number" 
+        id="montoPago"
+        min="0"
+        step="0.01"
+    >
+
+    <br><br>
+
+    <label>Método de pago:</label>
+
+    <select id="metodoPago">
+
+        <option value="">
+            Selecciona un método
+        </option>
+
+        <option value="Transferencia">
+            Transferencia
+        </option>
+
+        <option value="Tarjeta">
+            Tarjeta
+        </option>
+
+        <option value="Efectivo">
+            Efectivo
+        </option>
+
+        <option value="Cheque">
+            Cheque
+        </option>
+
+    </select>
+
+    <br><br>
+
+    <label>Referencia / Folio:</label>
+
+    <input 
+        type="text" 
+        id="referenciaPago"
+        placeholder="Ej. TRANS-00125"
+    >
+
+    <br><br>
+
+    <label>Observaciones:</label>
+
+    <br>
+
+    <textarea 
+        id="observacionesPago"
+        rows="4"
+        cols="40"
+        placeholder="Observaciones del pago"
+    ></textarea>
+
+    <br><br>
+
+    <button onclick="guardarPago()">
+        Guardar pago
+    </button>
+
+    <button onclick="cerrarFormularioPago()">
+        Cancelar
+    </button>
+
+</div>
+    <script src="script.js"></script>
+
+</body>
+
+</html>
